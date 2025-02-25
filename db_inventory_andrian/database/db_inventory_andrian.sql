@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 24, 2025 at 03:05 AM
+-- Generation Time: Feb 24, 2025 at 06:47 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.25
 
@@ -28,12 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `barang` (
-  `id_barang` varchar(30) NOT NULL,
+  `id_barang` int NOT NULL,
   `nama_barang` varchar(30) DEFAULT NULL,
   `id_jenis` varchar(30) DEFAULT NULL,
-  `harga` varchar(30) DEFAULT NULL,
+  `harga` int DEFAULT NULL,
   `stok` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `id_jenis`, `harga`, `stok`) VALUES
+(1, 'Laptop', '3', 6000000, 20),
+(2, 'Kentang Goreng', '1', 24000, 70),
+(3, 'Coklat', '1', 20000, 99),
+(4, 'Es Jeruk', '2', 5000, 99),
+(5, 'Sepatu', '5', 500000, 99),
+(6, 'singkong', '2', 12000, 50);
 
 -- --------------------------------------------------------
 
@@ -45,6 +57,18 @@ CREATE TABLE `jenis` (
   `id_jenis` varchar(30) NOT NULL,
   `nama_jenis` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `jenis`
+--
+
+INSERT INTO `jenis` (`id_jenis`, `nama_jenis`) VALUES
+('1', 'makanan'),
+('2', 'minuman'),
+('3', 'elektronik'),
+('4', 'alat tulis'),
+('5', 'pakaian'),
+('8', 'topi');
 
 --
 -- Indexes for dumped tables

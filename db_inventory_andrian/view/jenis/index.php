@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -12,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Navigation Bar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +35,7 @@
 <div class="container">
     <h1>Data Jenis</h1>
    
-    <a href="view_tambah.php" class="btn btn-primary">Tambah Jenis Baru</a>
+    <a href="view_tambah.php" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Tambah Jenis Baru</a>
     <br></br>
     
     <table class="table table-bordered table-striped" border="1">
@@ -60,11 +61,11 @@
       <td><?php echo $result['nama_jenis'];?></td>
   
       <td>
-      <button type="button" class="btn btn-danger">Edit</button>
-      <button type="button" class="btn btn-warning">Hapus</button>
+      <a href="view_edit.php?id_jenis=<?php echo $result['id_jenis']?>"
+      class="btn btn-warning"><i class="fa-solid fa-pencil"></i> Edit</a>
       </td>
     </tr>
-  <?php 
+  <?php
     }
   }
     ?>

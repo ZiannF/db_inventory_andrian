@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navigation Bar</a>
+    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,54 +30,29 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      </div>
   </div>
 </nav>
-<div class="container">
-    <h1>Data Barang</h1>
-   
-    <a href="view_tambah.php" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Tambah Barang Baru</a>
-    <br></br>
-    
-    <table class="table table-bordered table-striped" border="1">
-  <thead>
-    <tr>
-      <th scope="col">ID Barang</th>
-      <th scope="col">Nama Barang</th>
-      <th scope="col">ID Jenis</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Stok</th>
-      <th scope="col">Aksi</th>
-
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
+<div class="container"> 
+    <h1>Data Jenis</h1>
   <?php
   include '../../config/koneksi.php';
-  $query = mysqli_query($conn, "SELECT * FROM barang");
-  if(mysqli_num_rows($query)){
-    while ($result=mysqli_fetch_assoc($query)){
-      ?>
-    <tr>
-      <td><?php echo $result['id_barang'];?></td>
-      <td><?php echo $result['nama_barang'];?></td>
-      <td><?php echo $result['id_jenis'];?></td>
-      <td><?php echo $result['harga'];?></td>
-      <td><?php echo $result['stok'];?></td>
-      <td>
-      <a href="view_edit.php?id_barang=<?php echo $result['id_barang']?>"
-      class="btn btn-warning"><i class="fa-solid fa-pencil"></i> Edit</a>
-      <a href="hapus.php?id_barang=<?php echo $result['id_barang']?>"
-      onclick="return confirm('Kamu Yakin?')"
-      class="btn btn-danger"><i class="fa-solid fa-trash"></i> Hapus</a>
-      </td>
-    </tr>
-  <?php 
-    }
-  }
-    ?>
-  
-</table>
+  $id_jenis=$_GET['id_jenis'];
+  $query = mysqli_query($conn, "SELECT * FROM jenis where id_jenis='$id_jenis'");
+  $result=mysqli_fetch_array($query);
+  ?>
+  <form action="proses_edit.php?id_jenis=<?php echo $result['id_jenis']?>" method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">ID Jenis</label>
+    <input type="text" class="form-control" name="id_jenis"
+    value="<?php echo $result['id_jenis']?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+     </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Nama Jenis</label>
+    <input type="text" class="form-control" name="nama_jenis"
+    value="<?php echo $result['nama_jenis']?>" id="exampleInputEmail1">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </div>
 </body>
   
